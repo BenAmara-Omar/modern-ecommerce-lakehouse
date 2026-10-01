@@ -52,7 +52,9 @@ flowchart TD
 
     style Lakehouse fill:none,stroke:#38bdf8,stroke-width:2px,stroke-dasharray: 5 5
     style Warehouse fill:none,stroke:#f59e0b,stroke-width:2px,stroke-dasharray: 5 5
-    style BI fill:none,stroke:#ec4899,stroke-width:2px,stroke-dasharray: 5 5 
+    style BI fill:none,stroke:#ec4899,stroke-width:2px,stroke-dasharray: 5 5
+```
+
 ---
 
 ## ⚡ Métriques Clés & Performance Technique
@@ -62,7 +64,7 @@ flowchart TD
 | **Ingestion Bronze** | PySpark 4.2 | 450 000 lignes brutes | Conversion Parquet & traçabilité (`ingestion_timestamp`) |
 | **Nettoyage Silver** | Delta Lake 4.4 | 4 tables transactionnelles | Support ACID, Time Travel & Feature Engineering |
 | **Data Warehouse** | PostgreSQL 15 | Conteneur Docker persistant | Landing zone analytique isolée sur port 5432 |
-| **Transformation Gold**| dbt-Core 1.12 | 7 modèles (4 vues, 3 tables) | Schéma en étoile dimensionnel matérialisé en ~3s |
+| **Transformation Gold** | dbt-Core 1.12 | 7 modèles (4 vues, 3 tables) | Schéma en étoile dimensionnel matérialisé en ~3s |
 | **Data Quality** | dbt test | **8/8 tests passés (100 %)** | Unicité des PK, complétude et intégrité référentielle FK |
 | **ML Supply Chain** | Scikit-Learn | Random Forest Classifier | **61,3 % de recall** sur les retards grâce au `class_weight='balanced'` |
 | **ML Marketing** | Scikit-Learn | K-Means + Scoring Churn | 96 000 clients segmentés (4,9 % VIPs générant 1,6 M$) |
@@ -93,6 +95,7 @@ Le modèle de données alimente deux pages décisionnelles hautement interactive
 ![Customer Intelligence Dashboard](screenshots/page2_customer_churn.png)
 
 ---
+
 ## 📂 Structure du Répertoire
 
 ```text
@@ -174,6 +177,6 @@ La connexion pointe automatiquement vers votre base locale PostgreSQL `localhost
 ## 👨‍💻 Auteur
 
 **Omar Ben Amara**  
-*Ingénieur BI & Big Data    *  
+*Ingénieur BI & Big Data*  
 * [LinkedIn](https://linkedin.com/in/omar-ben-amara-1bb86b229)  
 * Email : omarbenamara1919@gmail.com
