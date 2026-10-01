@@ -53,31 +53,46 @@ flowchart TD
     style Lakehouse fill:none,stroke:#38bdf8,stroke-width:2px,stroke-dasharray: 5 5
     style Warehouse fill:none,stroke:#f59e0b,stroke-width:2px,stroke-dasharray: 5 5
     style BI fill:none,stroke:#ec4899,stroke-width:2px,stroke-dasharray: 5 5
-```
-⚡ Métriques Clés & Performance Technique
-Étape du Pipeline	Technologie	Volume / Métrique Clé	Résultat Métier
-Ingestion Bronze	PySpark 4.2	450 000 lignes brutes	Conversion Parquet & traçabilité (ingestion_timestamp)
-Nettoyage Silver	Delta Lake 4.4	4 tables transactionnelles	Support ACID, Time Travel & Feature Engineering
-Data Warehouse	PostgreSQL 15	Conteneur Docker persistant	Landing zone analytique isolée sur port 5432
-Transformation Gold	dbt-Core 1.12	7 modèles (4 vues, 3 tables)	Schéma en étoile dimensionnel matérialisé en ~3s
-Data Quality	dbt test	8/8 tests passés (100 %)	Unicité des PK, complétude et intégrité référentielle FK
-ML Supply Chain	Scikit-Learn	Random Forest Classifier	61,3 % de recall sur les retards grâce au class_weight='balanced'
-ML Marketing	Scikit-Learn	K-Means + Scoring Churn	96 000 clients segmentés (4,9 % VIPs générant 1,6 M$)
-Pipeline complet	Python / Subprocess	Exécution totale en ~215s	Orchestration automatisée de bout en bout
-📊 Tableaux de Bord Power BI (Aperçu)
+---
+
+## ⚡ Métriques Clés & Performance Technique
+
+| Étape du Pipeline | Technologie | Volume / Métrique Clé | Résultat Métier |
+| :--- | :--- | :--- | :--- |
+| **Ingestion Bronze** | PySpark 4.2 | 450 000 lignes brutes | Conversion Parquet & traçabilité (`ingestion_timestamp`) |
+| **Nettoyage Silver** | Delta Lake 4.4 | 4 tables transactionnelles | Support ACID, Time Travel & Feature Engineering |
+| **Data Warehouse** | PostgreSQL 15 | Conteneur Docker persistant | Landing zone analytique isolée sur port 5432 |
+| **Transformation Gold**| dbt-Core 1.12 | 7 modèles (4 vues, 3 tables) | Schéma en étoile dimensionnel matérialisé en ~3s |
+| **Data Quality** | dbt test | **8/8 tests passés (100 %)** | Unicité des PK, complétude et intégrité référentielle FK |
+| **ML Supply Chain** | Scikit-Learn | Random Forest Classifier | **61,3 % de recall** sur les retards grâce au `class_weight='balanced'` |
+| **ML Marketing** | Scikit-Learn | K-Means + Scoring Churn | 96 000 clients segmentés (4,9 % VIPs générant 1,6 M$) |
+| **Pipeline complet** | Python / Subprocess | **Exécution totale en ~215s** | Orchestration automatisée de bout en bout |
+
+---
+
+## 📊 Tableaux de Bord Power BI (Aperçu)
+
 Le modèle de données alimente deux pages décisionnelles hautement interactives avec filtres croisés en temps réel.
-Page 1 : Supply Chain & Delivery Delay Risk
-KPIs Exécutifs : Chiffre d'Affaires total ($15,84M), Volume de commandes (99K), Délai moyen de livraison (12,5 jours), Taux de retard réel (7,87 %).
-Visualisation IA : Répartition des commandes par niveau de risque prédictif (Haut Risque, Modéré, Faible).
-Analyse Temporelle & Géographique : Saisonnalité des ventes et classement des États les plus touchés par les retards (São Paulo, Rio de Janeiro, Minas Gerais).
-Pilotage Opérationnel : Tableau de surveillance des commandes critiques pour action proactive.
-![Image](screenshots/page1_supply_chain.png)
-Page 2 : Customer Intelligence & Churn Retention
-KPIs Valeur Client : 96K clients uniques, Panier moyen ($159,33), Risque moyen d'attrition (71,41 %), 4,87K clients VIP.
-Clustering K-Means : 4 segments comportementaux identifiés (Clients Endormis 41,4 %, Clients Perdus 30,3 %, Clients Actifs 23,5 %, VIP / Champions 4,9 %).
-Analyse Financière : Répartition du chiffre d'affaires par cluster (identification du réservoir de réactivation de 6,4 M$).
-Plan d'Action Marketing : Liste de ciblage dynamique avec score de Churn par client pour campagnes promotionnelles.
-![Image](screenshots/page2_customer_churn.png)
+
+### Page 1 : Supply Chain & Delivery Delay Risk
+* **KPIs Exécutifs :** Chiffre d'Affaires total ($15,84M), Volume de commandes (99K), Délai moyen de livraison (12,5 jours), Taux de retard réel (7,87 %).
+* **Visualisation IA :** Répartition des commandes par niveau de risque prédictif (*Haut Risque*, *Modéré*, *Faible*).
+* **Analyse Temporelle & Géographique :** Saisonnalité des ventes et classement des États les plus touchés par les retards (São Paulo, Rio de Janeiro, Minas Gerais).
+* **Pilotage Opérationnel :** Tableau de surveillance des commandes critiques pour action proactive.
+
+![Supply Chain Dashboard](screenshots/page1_supply_chain.png)
+
+---
+
+### Page 2 : Customer Intelligence & Churn Retention
+* **KPIs Valeur Client :** 96K clients uniques, Panier moyen ($159,33), Risque moyen d'attrition (71,41 %), 4,87K clients VIP.
+* **Clustering K-Means :** 4 segments comportementaux identifiés (*Clients Endormis 41,4 %*, *Clients Perdus 30,3 %*, *Clients Actifs 23,5 %*, *VIP / Champions 4,9 %*).
+* **Analyse Financière :** Répartition du chiffre d'affaires par cluster (identification du réservoir de réactivation de 6,4 M$).
+* **Plan d'Action Marketing :** Liste de ciblage dynamique avec score de Churn par client pour campagnes promotionnelles.
+
+![Customer Intelligence Dashboard](screenshots/page2_customer_churn.png)
+
+---
 ## 📂 Structure du Répertoire
 
 ```text
