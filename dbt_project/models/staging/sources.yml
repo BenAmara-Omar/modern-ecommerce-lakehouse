@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: silver_sources
+    schema: public
+    tables:
+      - name: silver_orders
+      - name: silver_order_items
+      - name: silver_customers
+      - name: silver_products

@@ -1,0 +1,12 @@
+ecommerce_dw_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: lakehouse_user
+      password: lakehouse_password
+      port: 5432
+      dbname: ecommerce_dw
+      schema: gold
+      threads: 4

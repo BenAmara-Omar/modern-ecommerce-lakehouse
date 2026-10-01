@@ -1,0 +1,22 @@
+name: 'ecommerce_lakehouse'
+version: '1.0.0'
+config-version: 2
+
+# Référence au profil de connexion défini dans profiles.yml
+profile: 'ecommerce_dw_profile'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  ecommerce_lakehouse:
+    # Les modèles de staging seront créés sous forme de VUES SQL
+    staging:
+      +materialized: view
+    # Les modèles de la couche Gold (Marts) seront créés sous forme de vraies TABLES
+    marts:
+      +materialized: table
