@@ -53,6 +53,7 @@ flowchart TD
     style Lakehouse fill:none,stroke:#38bdf8,stroke-width:2px,stroke-dasharray: 5 5
     style Warehouse fill:none,stroke:#f59e0b,stroke-width:2px,stroke-dasharray: 5 5
     style BI fill:none,stroke:#ec4899,stroke-width:2px,stroke-dasharray: 5 5
+    ```
 ---
 
 ## ⚡ Métriques Clés & Performance Technique
